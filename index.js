@@ -67,6 +67,12 @@ const guardarVenta = () => {
     if (producto.trim() === '' || precio === NaN) {
         return alert('Completa todos los campos');
     }
+    if(typeof(precio)){
+        return alert('Ingresa un precio valido.'); 
+    }
+    if(precio.toString().trim() === '' || precio > 100000){
+        return alert('Ingresa un precio valido.');
+    }
 
     const actual = `${fecha.getDate()}-${fecha.getMonth() + 1}-${fecha.getFullYear()}`;
     
