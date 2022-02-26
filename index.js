@@ -16,7 +16,7 @@ docRef.get().then((doc) => {
     if (doc.exists) {
 
         const productos = doc.data().productos;
-        let opcionesProducto = '<option selected disabled value="">--Selecciona un corte--</option>';
+        let opcionesProducto = '<option selected value="varios articulos">--Varios--</option>';
         productos.forEach(producto => {
 
             opcionesProducto += `<option value="${producto}">${producto}</option>`;
@@ -53,7 +53,6 @@ docRefVentas.get().then((doc) => {
 });
 
 
-
 btnGuardar.addEventListener('click', e => {
     e.preventDefault();
     guardarVenta();
@@ -65,14 +64,12 @@ const guardarVenta = () => {
     const producto = formulario.select.value;
     const precio = parseFloat(formulario.input.value);
 
-    if (producto.trim() === '' || precio.toString().trim() === '') {
-        console.log('Completa todos los campos');
-        return;
+    if (producto.trim() === '' || precio === NaN) {
+        return alert('Completa todos los campos');
     }
 
     const actual = `${fecha.getDate()}-${fecha.getMonth() + 1}-${fecha.getFullYear()}`;
-    //console.log(actual);
-
+    
     const docVenta = {
         producto,
         importe: precio
