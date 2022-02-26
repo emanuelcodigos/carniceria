@@ -208,6 +208,9 @@ th{
 
 }
 
+.divTabla {
+  overflow-y: auto;
+}
 .oculto{
   display: none;
 }

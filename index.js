@@ -67,7 +67,7 @@ const guardarVenta = () => {
     if (producto.trim() === '' || precio === NaN) {
         return alert('Completa todos los campos');
     }
-    if(typeof(precio)){
+    if(typeof(precio) === 'string'){
         return alert('Ingresa un precio valido.'); 
     }
     if(precio.toString().trim() === '' || precio > 100000){
