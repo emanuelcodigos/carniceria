@@ -41,7 +41,7 @@ docRefVentas.get().then((doc) => {
             importe += venta.importe;
         });
 
-        importeTotalVentasHoy.innerHTML = importe;
+        importeTotalVentasHoy.innerHTML = importe.toFixed(2);
 
 
 
@@ -124,7 +124,7 @@ const mostrarTodasLasVentasDelDia = () => {
             });
 
             divDetalleVentas.innerHTML = detalles;
-            importeTotalVentasHoy.innerHTML = importe;
+            importeTotalVentasHoy.innerHTML = importe.toFixed(2);
 
         } else {
             console.log("No such document!");
