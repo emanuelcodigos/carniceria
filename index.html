@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carniceria 5026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css">
+
+</head>
+
+<body class="container">
+    <br><br>
+    <header class="divLogo">
+        <img src="./assets/img/icone-cercle-noir.svg" class="imagenLogo">
+        <div class="divTextoLogo">
+            <div>
+                <p class="tituloLogo">Carniceria</p>
+                <p class="subtituloLogo">Ventas</p>
+            </div>
+        </div>
+    </header>
+
+    <div>
+
+        <form id="formulario">
+            <h2 class="titulo">Ingresar nueva venta</h2>
+            <div class="divItemForm">
+                <label>Producto</label>
+                <select id="selectCorte" name="select">
+                    <option selected disabled value="">--Selecciona un corte--</option>
+                </select>
+            </div>
+            <div class="divItemForm">
+                <label>Precio</label>
+                <div class="inputPrecio">
+                    <input class="precioPlaceHolder" value="$" type="text" disabled>
+                    <input id="inputPrecio" name="input" class="boton" type="number" placeholder="importe">
+                </div>
+            </div>
+
+            <button type="submit" id="btnGuardar" class="botonPrimary">Guardar</button>
+
+        </form>
+
+
+    </div>
+
+    <div class="ventasDelDia">
+        <h2 class="tituloTotalVentas">Ventas del dia</h2>
+        <p class="importeTotalVentas">Total: <span id="importeTotalVentasHoy">$</span></p>
+        <button class="botonPrimary" id="btnVerDetalles">Ver detalles</button>
+    </div>
+
+    <div class="oculto" id="contenedorTabla">
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Importe</th>
+                </tr>
+            </thead>
+            <tbody id="detalleVentas">
+
+            </tbody>
+
+        </table>
+        <button class="botonSecondary" id="btnRecargarTabla">Recargar</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+
+    <script src="./firebase/config.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
