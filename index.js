@@ -5,12 +5,14 @@ const divDetalleVentas = document.getElementById('detalleVentas');
 const contendorDetalles = document.getElementById('contenedorTabla');
 const importeTotalVentasHoy = document.getElementById('importeTotalVentasHoy');
 const btnRecargarTabla = document.getElementById('btnRecargarTabla');
+const tablaVentasAnteriores = document.getElementById('detalleVentasAnteriores');
 
 const db = firebase.firestore();
 const fecha = new Date;
 
 const docRef = db.collection("carniceria").doc("productos");
 const docRefVentas = db.collection("carniceria").doc("ventas");
+const docRefVentasAnteriores = db.collection("carniceria").doc("ventas"); 
 
 docRef.get().then((doc) => {
     if (doc.exists) {
@@ -45,6 +47,38 @@ docRefVentas.get().then((doc) => {
 
 
 
+    } else {
+        console.log("No such document!");
+    }
+}).catch((error) => {
+    console.log("Error getting document:", error);
+});
+
+
+docRefVentasAnteriores.get().then((doc) => {
+    if (doc.exists) {
+        
+        const ventas = doc.data();
+
+        //console.log(ventas);
+
+        const arrayVentas = Object.entries(ventas);
+        let htmlTabla = '';
+        arrayVentas.forEach( ventasDia => {
+            
+            let importeVentas = 0;
+            ventasDia[1].forEach( venta => {
+                importeVentas += venta.importe;
+            });
+
+            htmlTabla += `<tr><td>${ventasDia[0]}</td><td>$ ${importeVentas.toFixed(2)}</td></tr>`;
+            
+        });
+
+        tablaVentasAnteriores.innerHTML = htmlTabla;
+        
+
+        //importeTotalVentasHoy.innerHTML = importe.toFixed(2);
     } else {
         console.log("No such document!");
     }
@@ -114,7 +148,7 @@ btnRecargarTabla.addEventListener('click', () => {
 
 const mostrarTodasLasVentasDelDia = () => {
     const actual = `${fecha.getDate()}-${fecha.getMonth() + 1}-${fecha.getFullYear()}`;
-    console.log(actual);
+    //console.log(actual);
 
     const docRef = db.collection("carniceria").doc("ventas");
 
