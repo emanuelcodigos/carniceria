@@ -105,6 +105,8 @@ const guardarVenta = () => {
         return alert('Ingresa un precio valido.');
     }
 
+    console.log(precio);
+
     const actual = `${fecha.getDate()}-${fecha.getMonth() + 1}-${fecha.getFullYear()}`;
     
     const docVenta = {
