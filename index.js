@@ -98,7 +98,7 @@ const guardarVenta = () => {
     const producto = formulario.select.value;
     const precio = formulario.input.value;
 
-    if (producto.trim() === '' || precio.toString().trim() === '') {
+    if (producto.trim() === '' || precio.trim() === '') {
         return alert('Completa todos los campos');
     }
     if( parseFloat(precio) > 100000 || precio === NaN){
