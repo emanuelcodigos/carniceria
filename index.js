@@ -96,15 +96,12 @@ btnGuardar.addEventListener('click', e => {
 const guardarVenta = () => {
 
     const producto = formulario.select.value;
-    const precio = parseFloat(formulario.input.value);
+    const precio = formulario.input.value;
 
-    if (producto.trim() === '' || precio === NaN || precio === null || precio === undefined) {
+    if (producto.trim() === '' || precio.toString().trim() === '') {
         return alert('Completa todos los campos');
     }
-    if(typeof(precio) === 'string'){
-        return alert('Ingresa un precio valido.'); 
-    }
-    if(precio.toString().trim() === '' || precio > 100000){
+    if( parseFloat(precio) > 100000 || precio === NaN){
         return alert('Ingresa un precio valido.');
     }
 
@@ -112,7 +109,7 @@ const guardarVenta = () => {
     
     const docVenta = {
         producto,
-        importe: precio
+        importe: parseFloat(precio)
     }
 
     try {
@@ -123,7 +120,7 @@ const guardarVenta = () => {
 
         const importeAcumulado = parseFloat(importeTotalVentasHoy.innerHTML);
         
-        importeTotalVentasHoy.innerHTML = (importeAcumulado + precio).toFixed(2);
+        importeTotalVentasHoy.innerHTML = (importeAcumulado + parseFloat(precio)).toFixed(2);
         alert('Guardado correctamente');
         formulario.reset();
     } catch (error) {
