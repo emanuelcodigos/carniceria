@@ -98,7 +98,7 @@ const guardarVenta = () => {
     const producto = formulario.select.value;
     const precio = parseFloat(formulario.input.value);
 
-    if (producto.trim() === '' || precio === NaN) {
+    if (producto.trim() === '' || precio === NaN || precio === null || precio === undefined) {
         return alert('Completa todos los campos');
     }
     if(typeof(precio) === 'string'){
@@ -123,7 +123,7 @@ const guardarVenta = () => {
 
         const importeAcumulado = parseFloat(importeTotalVentasHoy.innerHTML);
         
-        importeTotalVentasHoy.innerHTML = importeAcumulado + precio;
+        importeTotalVentasHoy.innerHTML = (importeAcumulado + precio).toFixed(2);
         alert('Guardado correctamente');
         formulario.reset();
     } catch (error) {
