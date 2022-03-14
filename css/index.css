@@ -211,6 +211,32 @@ th{
 .divTabla {
   overflow-y: auto;
 }
+.divFiltrar{
+  margin: auto;
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+}
+.btnFiltrar{
+  margin: 1rem;
+  padding: 1rem;
+  background-color: var(--azul);
+  border-radius: 6px;
+  color: var(--blanco);
+}
+.textoOculto{
+  color: var(--primary);
+}
+
+.alertError{
+  margin: 10px auto;
+  background-color: #d12f2f;
+  color: var(--blanco);
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 6px;
+}
 .oculto{
   display: none;
 }
