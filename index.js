@@ -105,13 +105,13 @@ const filtrarVentasAnteriores = () => {
 
     const selectMes = divFiltrar.children[0].children[1].value;
     const selectDia = divFiltrar.children[1].children[1].value;
-    const diaActual = fecha.getDate();
+    //const diaActual = fecha.getDate();
 
     try {
         let htmlTabla = '';
         const docRef = db.collection('carniceria').doc('ventasNuevo').
             collection(MESES[selectMes - 1].mes);
-        docRef.where('fecha', '>=', parseInt(selectDia)).where('fecha', '<=', diaActual).get()
+        docRef.where('fecha', '>=', parseInt(selectDia))/*.where('fecha', '<=', diaActual)*/.get()
             .then(querySnapshot => {
 
                 querySnapshot.forEach((doc) => {
